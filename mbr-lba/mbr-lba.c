@@ -21,10 +21,10 @@ int main(int argc, char const *argv[])
 
     if (argv[3] == NULL)
     {
-        printf("--> not set mbr logic addr, defualt write to lba 0\n");
+        printf("--> not set mbr logic addr, default write to lba 0\n");
     }else
     {
-        startSeek = atoi(argv[3]);
+        startSeek = atoi(argv[3]);      
     }
 
     const char* asmFileName = argv[1];

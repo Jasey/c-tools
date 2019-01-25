@@ -7,8 +7,9 @@
 ```shell
     #使用方法
     $ gcc mbr-lba.c -o mbr-lba
-    $ ./mbr-lba ${binFilePath} ${vhdFormatDiskFilePath}
+    $ ./mbr-lba ${binFilePath} ${vhdFormatDiskFilePath} [${lbaAddr}]
 
     # ${binFilePath} 编译好的二进制文件路径
     # ${vhdFormatDiskFilePath} vhd格式的磁盘文件路径
+    # ${lbaAddr} 为可选的，如果不输入，则默认写入主引导扇区（lba addr = 0）
 ```

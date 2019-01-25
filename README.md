@@ -83,6 +83,7 @@ vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
 # 第三步，设置Bochs所使用的磁盘，软盘的关键字为floppy。
 # 若只有一个软盘，则使用floppya即可，若有多个，则为floppya，floppyb...
 # floppya: 1_44=a.img, status=inserted
+# 由于我们使用硬盘启动，设置不检测软盘
 floppy_bootsig_check: disabled=1
 # 第四步，选择启动盘符。
 boot: disk

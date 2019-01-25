@@ -96,11 +96,6 @@ ata3: enabled=0
  
 # 第五步，设置日志文件的输出。
 log: bochsout.txt
- 
-# 第六步，开启或关闭某些功能。
-# 下面是关闭鼠标，并打开键盘。
-# mouse: enabled=0
-# keyboard_mapping: enabled=1, map=$BXSHARE/keymaps/x11-pc-us.map
 
 ```
 

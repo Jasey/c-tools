@@ -2,3 +2,5 @@
 *.out
 *.exe
 *.DS_Store
+*.vhd
+*.bin

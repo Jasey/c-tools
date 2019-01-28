@@ -15,9 +15,18 @@ int main(int argc, char const *argv[])
         return 0;
     }
 
+    char ans = 'Y';
+    char addr[MAX_LBR_ADDR_LEN];
     if (argv[3] == NULL)
     {
-        printf("--> not set mbr logic addr, default write to lba 0\n");
+        printf("default write to lba 0 ? (Y/N) ");
+        scanf("%c", &ans);
+        if (!(ans == 'Y' || ans == 'y' || ans == '\n'))
+        {
+            printf("lba addr > ");
+            scanf("%s", addr);
+            startSeek = atoi(addr); 
+        }
     }else
     {
         startSeek = atoi(argv[3]);      

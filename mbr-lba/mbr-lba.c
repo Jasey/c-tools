@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MBR_LEN 512
-
-int writeMbr(const char* bin, int mbrAddr, FILE* desFd);
+#include "mbr-lba.h"
 
 int main(int argc, char const *argv[])
 {
@@ -50,7 +44,7 @@ int main(int argc, char const *argv[])
 
     char binArray[MBR_LEN];
     memset(binArray, 0, MBR_LEN);
-    
+
     int mbrAddr = startSeek;
     int total = 0;
 

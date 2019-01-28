@@ -397,16 +397,11 @@ int parseNode(const char* line, char *suffix, long* pHash)
 
         index ++;
     }
-    printf("-> line : %s, node : %s, suffix : %s\n", line, hashNodeString, suffixString);
-
     hashNodeString[strlen(hashNodeString)-1] = '\0';
     suffixString[strlen(suffixString)-1] = '\0';
 
     *pHash = atol(&hashNodeString[1]);
     strcpy(suffix, &suffixString[1]);
-
-    printf("-> code : %ld, suffix : %s\n", *pHash, suffix);
-
     return 1;
 }
 

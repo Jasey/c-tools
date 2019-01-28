@@ -50,6 +50,7 @@ int main(int argc, char const *argv[])
 
     char binArray[MBR_LEN];
     memset(binArray, 0, MBR_LEN);
+    
     int mbrAddr = startSeek;
     int total = 0;
 
@@ -62,6 +63,8 @@ int main(int argc, char const *argv[])
         }
         total++;
         mbrAddr++;
+        memset(binArray, 0, MBR_LEN);
+
     }
 
     fclose(desFd);

@@ -35,6 +35,9 @@
     tb_playlist_track_index 0 199
     播单相关统计表 专辑id分表
     tb_playlist_offline_statistics 0 199
+
+    #4. 可以重新配置算法和文件，使用命令
+    --redit
 ```
 
 ### mbr-lba

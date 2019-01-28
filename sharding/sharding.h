@@ -4,9 +4,21 @@
 #include <string.h>
 #include <stdint.h>
 
+#define A_CRC  "default"
+#define A_FILE "file"
+#define EDIT "--edit"
+#define STORE "--store"
+#define INFO "--info"
+
+#define MAX_SUFFIX_LEN 100
+#define MAX_LINE_LEN 1000
+
+#define CRC_TYPE 0
+#define FILE_TYPE 1
+
 struct Node
 {
-    char suffix[10];
+    char suffix[MAX_SUFFIX_LEN];
     long hashNode;
     struct Node *parent;
     struct Node *left;
@@ -54,10 +66,7 @@ uint32_t crc32_table[] =
 };
 
 
-
-node *tableNodes;
-
-int initHashTable(const char *baseTableName, int form, int to);
+int initHashTable(int type);
 
 uint32_t make_crc(uint32_t crc, unsigned char *string, uint32_t size);
 
@@ -70,3 +79,15 @@ void showTree();
 /* Whether string s is a number. 
    Returns 0 for non-number, 1 for integer, 2 for hex-integer, 3 for float */
 int is_number(char * s);
+
+int help();
+
+int initCrc(const char* baseTableName, int from, int to);
+
+int initFile(const char* fileName);
+
+void edit();
+
+void info();
+
+int parseNode(const char* line, char *suffix, long* pHash);

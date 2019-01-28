@@ -37,7 +37,7 @@
     tb_playlist_offline_statistics 0 199
 
     #4. 可以重新配置算法和文件，使用命令
-    --redit
+    > --redit
 ```
 
 ### mbr-lba

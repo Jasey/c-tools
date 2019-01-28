@@ -4,6 +4,8 @@
 
 #define MBR_LEN 512
 
+int writeMbr(const char* bin, int mbrAddr, FILE* desFd);
+
 int main(int argc, char const *argv[])
 {
     int startSeek = 0;
@@ -37,30 +39,53 @@ int main(int argc, char const *argv[])
         printf("open file \"%s\" failed!\n", asmFileName);
         exit(1);
     }
-    char binArray[MBR_LEN];
-
-    fread(binArray, sizeof(char), MBR_LEN, fd);
-
-    fclose(fd);
 
     FILE* desFd = fopen(diskFileName, "rb+");
+
     if (desFd == NULL)
     {
         printf("open file \"%s\" failed!\n", diskFileName);
         exit(1);
     }
-    if (fseek(desFd, startSeek*MBR_LEN, SEEK_SET) != 0)
-    {
-        printf("can't find lba addr : %d\n", startSeek);
-        exit(1);
-    }
 
-    fwrite(binArray, sizeof(char), MBR_LEN, desFd);
+    char binArray[MBR_LEN];
+    memset(binArray, 0, MBR_LEN);
+    int mbrAddr = startSeek;
+    int total = 0;
+
+    while (fread(binArray, sizeof(char), MBR_LEN, fd) > 0)
+    {
+        if (writeMbr(binArray, mbrAddr, desFd) == -1)
+        {
+            printf("wirte mbr addr %d error\n", mbrAddr);
+            exit(1);
+        }
+        total++;
+        mbrAddr++;
+    }
 
     fclose(desFd);
 
-    printf("write mbr lba addr : %d success!!\n", startSeek);
+    fclose(fd);
+
+     printf("write mbr lba start addr : %d , total mbr num : %d success!!\n", startSeek, total);
 
     return 0;
 
+}
+
+int writeMbr(const char* bin, int mbrAddr, FILE* desFd)
+{
+    // seek addr
+    if (fseek(desFd, mbrAddr*MBR_LEN, SEEK_SET) != 0)
+    {
+        printf("can't find lba addr : %d\n", mbrAddr);
+        return -1;
+    }
+
+    fwrite(bin, sizeof(char), MBR_LEN, desFd);
+
+    printf("write to mbr lba addr : %d\n", mbrAddr);
+
+    return 1;
 }

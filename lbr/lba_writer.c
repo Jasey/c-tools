@@ -1,4 +1,4 @@
-#include "mbr-lba.h"
+#include "lba_writer.h"
 
 int main(int argc, char const *argv[])
 {

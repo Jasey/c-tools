@@ -74,7 +74,7 @@ int main(int argc, char const *argv[])
 
     fclose(fd);
 
-     printf("write mbr lba start addr : %d , total mbr num : %d success!!\n", startSeek, total);
+     printf("write lba start addr : %d , total block num : %d success!!\n", startSeek, total);
 
     return 0;
 
@@ -91,7 +91,7 @@ int writeMbr(const char* bin, int mbrAddr, FILE* desFd)
 
     fwrite(bin, sizeof(char), MBR_LEN, desFd);
 
-    printf("write to mbr lba addr : %d\n", mbrAddr);
+    printf("write to lba addr : %d\n", mbrAddr);
 
     return 1;
 }

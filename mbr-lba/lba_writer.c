@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
     char addr[MAX_LBR_ADDR_LEN];
     if (argv[3] == NULL)
     {
-        printf("default write to lba 0 ? (Y/N) ");
+        printf("default write to mbr ? (Y/N) ");
         scanf("%c", &ans);
         if (!(ans == 'Y' || ans == 'y' || ans == '\n'))
         {
